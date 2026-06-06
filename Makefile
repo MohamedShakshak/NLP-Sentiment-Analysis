@@ -26,17 +26,18 @@ clean:
 	find . -type d -name "__pycache__" -delete
 
 
-## Lint using ruff (use `make format` to do formatting)
+## Lint using flake8, black, and isort (use `make format` to do formatting)
 .PHONY: lint
 lint:
-	ruff format --check
-	ruff check
+	flake8 src
+	isort --check --diff src
+	black --check src
 
-## Format source code with ruff
+## Format source code with black
 .PHONY: format
 format:
-	ruff check --fix
-	ruff format
+	isort src
+	black src
 
 
 
