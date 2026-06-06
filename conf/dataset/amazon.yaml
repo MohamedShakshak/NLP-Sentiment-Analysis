@@ -1,0 +1,18 @@
+name: amazon
+
+raw_path: data/raw/Reviews.csv
+
+read_csv_kwargs: {}
+
+column_mapping:
+  Text: raw_text
+  Score: target
+
+drop_classes:
+  - 3
+
+target_mapping:
+  1: 0
+  2: 0
+  4: 1
+  5: 1

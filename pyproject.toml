@@ -18,11 +18,27 @@ classifiers = [
 dependencies = [
     "black",
     "flake8",
+    "hydra-core>=1.3.2",
     "isort",
+    "omegaconf>=2.3.0",
+    "pandas>=2.0.0",
     "pip",
     "python-dotenv",
+    "scikit-learn",
+    "numpy",
+    "nltk",
+    "scipy",
+    "bm25s",
+    "xgboost",
+    "mlflow",
+    "gensim",
+    "fastapi",
+    "uvicorn[standard]",
+    "python-multipart",
+    "matplotlib",
+    "dvc>=3.67.1",
 ]
-requires-python = "~=3.12.0"
+requires-python = ">=3.12"
 
 [tool.black]
 line-length = 99

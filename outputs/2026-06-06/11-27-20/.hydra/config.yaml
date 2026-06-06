@@ -1,0 +1,21 @@
+dataset:
+  dataset_name: amazon
+  raw_path: data/raw/Reviews.csv
+  read_csv_kwargs: {}
+  column_mapping:
+    Text: raw_text
+    Score: target
+  preprocessing:
+    strip_html: true
+    handle_social_tokens: false
+    expand_contractions: false
+    remove_stopwords: true
+    max_features: 15000
+  drop_classes:
+  - 3
+  target_mapping:
+    1: 0
+    2: 0
+    4: 1
+    5: 1
+seed: 42

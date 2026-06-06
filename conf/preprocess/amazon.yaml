@@ -1,0 +1,7 @@
+lowercase: true
+remove_stopwords: true
+method: lemmatization
+handle_social_tokens: false
+expand_contractions: false
+strip_html: true
+collapse_elongated: false

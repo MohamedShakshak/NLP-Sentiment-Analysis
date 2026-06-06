@@ -1,0 +1,22 @@
+# DVC pipeline parameters — tracked by `dvc params diff`
+# These mirror the Hydra config defaults for reproducibility.
+
+dataset: amazon          # amazon | sentiment140
+vectorizer: tfidf        # tfidf | bow | bm25
+model: logistic_regression
+
+split:
+  test_size: 0.2
+  random_state: 42
+  stratify: true
+
+preprocess:
+  lowercase: true
+  remove_stopwords: true
+  method: lemmatization
+  strip_html: true
+  handle_social_tokens: false
+  expand_contractions: false
+  collapse_elongated: false
+
+seed: 42

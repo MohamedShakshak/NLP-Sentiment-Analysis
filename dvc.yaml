@@ -1,0 +1,76 @@
+stages:
+
+  train_amazon:
+    cmd: >
+      uv run python src/pipelines/train_pipeline.py
+      dataset=amazon
+      preprocess=amazon
+      vectorizer=tfidf
+      model=logistic_regression
+    params:
+      - params.yaml:
+          - split
+          - seed
+    deps:
+      - src/pipelines/train_pipeline.py
+      - src/data/ingest.py
+      - src/data/split.py
+      - src/features/preprocess.py
+      - src/features/vectorize.py
+      - src/models/train.py
+      - src/models/evaluate.py
+      - conf/config.yaml
+      - conf/dataset/amazon.yaml
+      - conf/preprocess/amazon.yaml
+      - conf/vectorizer/tfidf.yaml
+      - conf/model/logistic_regression.yaml
+      - conf/split/default.yaml
+      - data/raw/Reviews.csv
+    outs:
+      - models/amazon_sentiment_model.pkl
+      - models/amazon_vectorizer.pkl
+    metrics:
+      - mlruns/:
+          cache: false
+
+  train_sentiment140:
+    cmd: >
+      uv run python src/pipelines/train_pipeline.py
+      dataset=sentiment140
+      preprocess=sentiment140
+      vectorizer=bm25
+      model=logistic_regression
+    deps:
+      - src/pipelines/train_pipeline.py
+      - src/data/ingest.py
+      - src/data/split.py
+      - src/features/preprocess.py
+      - src/features/vectorize.py
+      - src/models/train.py
+      - src/models/evaluate.py
+      - conf/config.yaml
+      - conf/dataset/sentiment140.yaml
+      - conf/preprocess/sentiment140.yaml
+      - conf/vectorizer/bm25.yaml
+      - conf/model/logistic_regression.yaml
+      - conf/split/default.yaml
+      - data/raw/training.1600000.processed.noemoticon.csv
+    outs:
+      - models/sentiment140_sentiment_model.pkl
+      - models/sentiment140_vectorizer.pkl
+
+  build_search_index_amazon:
+    cmd: >
+      uv run python src/pipelines/search_pipeline.py
+      dataset=amazon
+      preprocess=amazon
+      vectorizer=tfidf
+      model=logistic_regression
+    deps:
+      - src/pipelines/search_pipeline.py
+      - src/search/bm25.py
+      - models/amazon_sentiment_model.pkl
+      - models/amazon_vectorizer.pkl
+      - data/raw/Reviews.csv
+    outs:
+      - models/amazon_search_index.pkl

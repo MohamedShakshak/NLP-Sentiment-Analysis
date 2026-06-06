@@ -1,0 +1,2 @@
+method: tfidf
+max_features: 15000

@@ -1,0 +1,8 @@
+dataset:
+  name: amazon
+  path: data/raw/Reviews.csv
+  text_column: Text
+  target_column: Score
+  csv:
+    encoding: utf-8
+seed: 42

@@ -1,0 +1,36 @@
+dataset:
+  name: amazon
+  raw_path: data/raw/Reviews.csv
+  read_csv_kwargs: {}
+  column_mapping:
+    Text: raw_text
+    Score: target
+  drop_classes:
+  - 3
+  target_mapping:
+    1: 0
+    2: 0
+    4: 1
+    5: 1
+preprocess:
+  lowercase: true
+  remove_stopwords: true
+  method: lemmatization
+  handle_social_tokens: false
+  expand_contractions: false
+  strip_html: true
+  collapse_elongated: false
+vectorizer:
+  method: tfidf
+  max_features: 15000
+model:
+  class_name: sklearn.linear_model.LogisticRegression
+  params:
+    C: 1.0
+    max_iter: 1000
+    random_state: 42
+split:
+  test_size: 0.2
+  random_state: 42
+  stratify: true
+seed: 42

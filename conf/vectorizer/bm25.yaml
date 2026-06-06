@@ -1,0 +1,4 @@
+method: bm25_features
+max_features: 15000
+k1: 1.5
+b: 0.75

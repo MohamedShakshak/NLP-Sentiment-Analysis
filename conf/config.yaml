@@ -1,0 +1,9 @@
+defaults:
+  - dataset: amazon
+  - preprocess: amazon
+  - vectorizer: tfidf
+  - model: logistic_regression
+  - split: default
+  - _self_
+
+seed: 42

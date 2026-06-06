@@ -1,0 +1,4 @@
+- dataset=sentiment140
+- preprocess=sentiment140
+- vectorizer=bm25
+- model=logistic_regression

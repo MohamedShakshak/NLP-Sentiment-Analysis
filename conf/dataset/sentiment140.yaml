@@ -1,0 +1,17 @@
+name: sentiment140
+
+raw_path: data/raw/training.1600000.processed.noemoticon.csv
+
+read_csv_kwargs:
+  encoding: latin-1
+  header: null
+
+column_mapping:
+  5: raw_text
+  0: target
+
+drop_classes: []
+
+target_mapping:
+  0: 0
+  4: 1
