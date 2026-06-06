@@ -37,6 +37,7 @@ dependencies = [
     "python-multipart",
     "matplotlib",
     "dvc>=3.67.1",
+    "dvc-s3>=3.3.0",
 ]
 requires-python = ">=3.12"
 

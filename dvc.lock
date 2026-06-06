@@ -1,0 +1,83 @@
+schema: '2.0'
+stages:
+  train_amazon:
+    cmd: "uv run python src/pipelines/train_pipeline.py dataset=amazon preprocess=amazon
+      vectorizer=tfidf model=logistic_regression\n"
+    deps:
+    - path: conf/config.yaml
+      hash: md5
+      md5: 0da4ddba504e835c775a38e7ef173d76
+      size: 145
+    - path: conf/dataset/amazon.yaml
+      hash: md5
+      md5: b0a7ab0625a5f02bcf5f3981c6d6d552
+      size: 181
+    - path: conf/model/logistic_regression.yaml
+      hash: md5
+      md5: 36890354064ed03d355da7036d51c77b
+      size: 105
+    - path: conf/preprocess/amazon.yaml
+      hash: md5
+      md5: 76ba3c9ccd5e7ad609c79f03fe0ea074
+      size: 159
+    - path: conf/split/default.yaml
+      hash: md5
+      md5: 962beae607dd5ff995f80fc77bfde7e4
+      size: 47
+    - path: conf/vectorizer/tfidf.yaml
+      hash: md5
+      md5: 3ee3c9ec606f0142c5e938b15cc86906
+      size: 34
+    - path: data/raw/Reviews.csv
+      hash: md5
+      md5: c3c950ae0be8b0736477c89d052d33fd
+      size: 300904694
+    - path: src/data/ingest.py
+      hash: md5
+      md5: 4668f927f86db47ce1c23bac9d3924c3
+      size: 1000
+    - path: src/data/split.py
+      hash: md5
+      md5: 5ffa6e24b5baf0abb143d67323e83c88
+      size: 505
+    - path: src/features/preprocess.py
+      hash: md5
+      md5: bc56b6a38e964997e21a7a25b8dbc47c
+      size: 3511
+    - path: src/features/vectorize.py
+      hash: md5
+      md5: b0a106b78b60d209a8d03d006f148fa9
+      size: 2879
+    - path: src/models/evaluate.py
+      hash: md5
+      md5: 31625997867d0f607fb67d32a15d9a76
+      size: 462
+    - path: src/models/train.py
+      hash: md5
+      md5: 765b2c953da29a8e7880d2a60ac3b133
+      size: 743
+    - path: src/pipelines/train_pipeline.py
+      hash: md5
+      md5: 95739e023ed718ea01ee4be5b40b9172
+      size: 4105
+    params:
+      params.yaml:
+        seed: 42
+        split:
+          test_size: 0.2
+          random_state: 42
+          stratify: true
+    outs:
+    - path: mlruns/
+      hash: md5
+      md5: e1d8b462702a1694ab3233f4a9fe49de.dir
+      size: 676118
+      nfiles: 2
+    - path: models/amazon_sentiment_model.pkl
+      hash: md5
+      md5: 419fb832d443f790fa7f072c18f1f018
+      size: 120720
+    - path: models/amazon_vectorizer.pkl
+      hash: md5
+      md5: a5e46b1e1ded0b74088f7347412993a5
+      size: 555398

@@ -1,6 +1,8 @@
 [core]
     autostage = true
     remote = dagshub
-
-[remote "dagshub"]
+['remote "dagshub"']
     url = https://dagshub.com/MohamedShakshak/NLP-Sentiment-Analysis.dvc
+['remote "origin"']
+    url = s3://dvc
+    endpointurl = https://dagshub.com/mohamedshakshak455/NLP-Sentiment-Analysis.s3
