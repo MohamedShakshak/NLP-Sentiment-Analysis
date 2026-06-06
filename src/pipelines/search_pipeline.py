@@ -3,6 +3,10 @@ from pathlib import Path
 
 import hydra
 from omegaconf import DictConfig
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 from src.data.ingest import load_data
 from src.features.preprocess import TextNormalizer

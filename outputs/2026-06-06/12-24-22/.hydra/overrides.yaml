@@ -1,0 +1,4 @@
+- dataset=amazon
+- preprocess=amazon
+- vectorizer=tfidf
+- model=logistic_regression

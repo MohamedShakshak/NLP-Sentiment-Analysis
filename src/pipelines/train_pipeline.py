@@ -5,6 +5,10 @@ import numpy as np
 import mlflow
 import hydra
 from omegaconf import DictConfig, OmegaConf
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 from src.data.ingest import load_data
 from src.data.split import split_data
