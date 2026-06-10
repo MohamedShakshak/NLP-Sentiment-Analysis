@@ -25,3 +25,19 @@ services:
       --backend-store-uri sqlite:///mlruns/mlflow.db
       --default-artifact-root /mlruns/artifacts
     restart: unless-stopped
+
+  streamlit:
+    build: .
+    container_name: nlp_streamlit_app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./models:/app/models
+      - ./conf:/app/conf
+    environment:
+      - DATASET=amazon
+    command: ["uv", "run", "streamlit", "run", "src/streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    depends_on:
+      - api
+    restart: unless-stopped
+
